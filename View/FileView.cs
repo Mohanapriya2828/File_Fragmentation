@@ -24,7 +24,9 @@ namespace File_Fragmentation.View
                 string paragraph = paragraphBuilder.ToString().TrimEnd('\r', '\n');
                 controller.CreateInputFile(paragraph);
 
-                
+                Console.WriteLine("\nEnter fragment size (number of characters per file):");
+                int fragmentSize = controller.ReadPositiveInt();
+                controller.FragmentFile(fragmentSize);
             }
         }
     }
