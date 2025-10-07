@@ -34,5 +34,23 @@ namespace File_Fragmentation.Controller
                 Console.WriteLine($"Error during fragmentation: {ex.Message}");
             }
         }
+        public void VerifyFile(string fileName)
+        {
+            try
+            {
+                while (!System.IO.File.Exists(fileName))
+                {
+                    Console.WriteLine("File does not exist. Please enter correct file name:");
+                    fileName = Console.ReadLine();
+                }
+
+                string content = System.IO.File.ReadAllText(fileName);
+                Console.WriteLine($"File '{fileName}' contains:\n{content}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error verifying file: {ex.Message}");
+            }
+        }
     }
 }

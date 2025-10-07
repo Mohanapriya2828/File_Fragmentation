@@ -27,6 +27,10 @@ namespace File_Fragmentation.View
                 Console.WriteLine("\nEnter fragment size (number of characters per file):");
                 int fragmentSize = controller.ReadPositiveInt();
                 controller.FragmentFile(fragmentSize);
+                Console.WriteLine("\nVerify a fragment file (enter file name):");
+                string fileName = Console.ReadLine();
+                controller.VerifyFile(fileName);
+
             }
         }
     }
