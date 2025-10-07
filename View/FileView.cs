@@ -32,6 +32,7 @@ namespace File_Fragmentation.View
                 controller.VerifyFile(fileName);
 
                 controller.DefragmentFiles();
+                controller.CompareFiles();
 
             }
         }

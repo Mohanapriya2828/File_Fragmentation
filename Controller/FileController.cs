@@ -65,6 +65,21 @@ namespace File_Fragmentation.Controller
                 Console.WriteLine($"Error during defragmentation: {ex.Message}");
             }
         }
+        public void CompareFiles()
+        {
+            try
+            {
+                bool isMatch = FileModel.CompareFiles(inputFile, outputFile);
+                if (isMatch)
+                    Console.WriteLine("Success! Input and Output files match.");
+                else
+                    Console.WriteLine("Something went wrong. Files do not match.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error comparing files: {ex.Message}");
+            }
+        }
 
     }
 }

@@ -53,5 +53,15 @@ namespace File_Fragmentation.Model
             File.WriteAllText(outputFile, combinedData.ToString());
             return combinedData.ToString();
         }
+        public static bool CompareFiles(string file1, string file2)
+        {
+            if (!File.Exists(file1) || !File.Exists(file2))
+                throw new FileNotFoundException("One or both files do not exist.");
+
+            string data1 = File.ReadAllText(file1);
+            string data2 = File.ReadAllText(file2);
+
+            return data1 == data2;
+        }
     }
 }
