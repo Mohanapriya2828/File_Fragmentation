@@ -63,5 +63,19 @@ namespace File_Fragmentation.Model
 
             return data1 == data2;
         }
+        public static void DeleteAllFragments(string inputFile, string outputFile)
+        {
+            if (File.Exists(inputFile)) File.Delete(inputFile);
+            if (File.Exists(outputFile)) File.Delete(outputFile);
+
+            string[] allTxtFiles = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.txt");
+
+            foreach (var file in allTxtFiles)
+            {
+                string name = Path.GetFileName(file);
+                if (name != inputFile && name != outputFile)
+                    File.Delete(file);
+            }
+        }
     }
 }

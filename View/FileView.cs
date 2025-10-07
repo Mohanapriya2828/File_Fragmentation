@@ -9,7 +9,7 @@ namespace File_Fragmentation.View
         private FileController controller = new FileController();
         public void Start()
         {
-
+            controller.DeleteAllFiles();
             while (true)
             {
                 Console.WriteLine("\nFile Fragmentation App \n");
@@ -33,6 +33,14 @@ namespace File_Fragmentation.View
 
                 controller.DefragmentFiles();
                 controller.CompareFiles();
+                Console.WriteLine("\nDo you want to enter another paragraph? (y/n):");
+                string choice = Console.ReadLine().ToLower();
+                if (choice == "y")
+                {
+                    controller.DeleteAllFiles();
+                    continue;
+                }
+                else break;
 
             }
         }

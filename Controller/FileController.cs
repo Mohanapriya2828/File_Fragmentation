@@ -7,6 +7,7 @@ namespace File_Fragmentation.Controller
     public class FileController
     {
         private string inputFile = "input.txt";
+        private string outputFile = "output.txt";
         private List<FileModel> fragments = new List<FileModel>();
         public void CreateInputFile(string paragraph)
         {
@@ -80,6 +81,30 @@ namespace File_Fragmentation.Controller
                 Console.WriteLine($"Error comparing files: {ex.Message}");
             }
         }
+        public void DeleteAllFiles()
+        {
+            try
+            {
+                FileModel.DeleteAllFragments(inputFile, outputFile);
+                fragments.Clear();
+                Console.WriteLine("All files deleted successfully! Ready for new input.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deleting files: {ex.Message}");
+            }
+        }
+        public int ReadPositiveInt()
+        {
+            int result;
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out result) && result > 0)
+                    return result;
 
+                Console.WriteLine("Invalid input. Please enter a positive integer:");
+            }
+        }
     }
 }
