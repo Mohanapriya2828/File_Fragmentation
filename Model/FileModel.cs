@@ -41,6 +41,17 @@ namespace File_Fragmentation.Model
 
             return fragments;
         }
-        
+        public static string Defragment(List<FileModel> fragments, string outputFile)
+        {
+            fragments.Sort((a, b) => string.Compare(a.FileName, b.FileName));
+            var combinedData = new StringBuilder();
+            foreach (var f in fragments)
+            {
+                combinedData.Append(File.ReadAllText(f.FileName));
+            }
+
+            File.WriteAllText(outputFile, combinedData.ToString());
+            return combinedData.ToString();
+        }
     }
 }

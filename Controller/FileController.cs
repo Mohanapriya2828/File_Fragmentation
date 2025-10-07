@@ -52,5 +52,19 @@ namespace File_Fragmentation.Controller
                 Console.WriteLine($"Error verifying file: {ex.Message}");
             }
         }
+        public void DefragmentFiles()
+        {
+            try
+            {
+                string combinedData = FileModel.Defragment(fragments, outputFile);
+                Console.WriteLine($"Defragmentation Completed. Output file: '{outputFile}' created!");
+                Console.WriteLine("You can open 'output.txt' to see the combined text.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during defragmentation: {ex.Message}");
+            }
+        }
+
     }
 }

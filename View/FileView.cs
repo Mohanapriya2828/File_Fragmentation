@@ -31,6 +31,8 @@ namespace File_Fragmentation.View
                 string fileName = Console.ReadLine();
                 controller.VerifyFile(fileName);
 
+                controller.DefragmentFiles();
+
             }
         }
     }
